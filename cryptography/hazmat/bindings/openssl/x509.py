@@ -141,6 +141,7 @@ int X509_CRL_add0_revoked(X509_CRL *, X509_REVOKED *);
 int i2d_X509_CRL_bio(BIO *, X509_CRL *);
 int X509_CRL_print(BIO *, X509_CRL *);
 int X509_CRL_set_issuer_name(X509_CRL *, X509_NAME *);
+int X509_CRL_set_version(X509_CRL *, long);
 int X509_CRL_sign(X509_CRL *, EVP_PKEY *, const EVP_MD *);
 
 int NETSCAPE_SPKI_verify(NETSCAPE_SPKI *, EVP_PKEY *);
@@ -182,12 +183,16 @@ const char *X509_get_default_private_dir(void);
 
 MACROS = """
 long X509_get_version(X509 *);
-
 ASN1_TIME *X509_get_notBefore(X509 *);
 ASN1_TIME *X509_get_notAfter(X509 *);
 
 long X509_REQ_get_version(X509_REQ *);
 X509_NAME *X509_REQ_get_subject_name(X509_REQ *);
+
+long X509_CRL_get_version(X509_CRL *);
+X509_NAME *X509_CRL_get_issuer(X509_CRL *);
+ASN1_TIME *X509_CRL_get_lastUpdate(X509_CRL *);
+ASN1_TIME *X509_CRL_get_nextUpdate(X509_CRL *);
 
 Cryptography_STACK_OF_X509 *sk_X509_new_null(void);
 void sk_X509_free(Cryptography_STACK_OF_X509 *);
